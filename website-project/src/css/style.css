@@ -378,12 +378,73 @@ footer {
   margin: 0 auto;
   overflow: visible;
   z-index: 2000;
-  pointer-events: none;
 }
 
+#menuBtn {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  z-index: 3000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#menuBtn svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+
+#menuBtn span,
+#menuBtn span::before,
+#menuBtn span::after {
+  position: absolute;
+  left: 22px;
+  width: 20px;
+  height: 3px;
+  background: #585247;
+  border-radius: 2px;
+  transition: 0.3s;
+  content: '';
+  display: block;
+}
+
+#menuBtn span {
+  top: 31px;
+}
+
+#menuBtn span::before {
+  content: '';
+  top: -8px;
+  position: absolute;
+}
+
+#menuBtn span::after {
+  content: '';
+  top: 8px;
+  position: absolute;
+}
+
+/* Hamburger to X animation */
+#hexNav.active #menuBtn span {
+  background-color: transparent;
+}
+#hexNav.active #menuBtn span::before {
+  transform: translateY(8px) rotate(45deg);
+}
+#hexNav.active #menuBtn span::after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Hex menu animation */
 #hex {
   position: absolute;
-  top: 80px; /* below the button */
+  top: 80px;
   left: 50%;
   transform: translateX(-50%) scale(0.1);
   width: 70vmin;
@@ -392,12 +453,10 @@ footer {
   pointer-events: none;
   z-index: 1000;
 }
-
-#menu__toggle:checked ~ #hex {
+#hexNav.active #hex {
   transform: translateX(-50%) scale(0.95);
   pointer-events: auto;
 }
-
 .tr {
   position: absolute;
   left: 50%; bottom: 50%;
@@ -408,10 +467,9 @@ footer {
   opacity: 0;
   transition: opacity 0.3s, transform 0.3s;
 }
-#menu__toggle:checked ~ #hex .tr {
+#hexNav.active .tr {
   opacity: 1;
 }
-
 .clip {
   position: absolute;
   top: 0; left: 0;
