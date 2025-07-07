@@ -35,7 +35,8 @@ header {
 .hamburger-menu {
   position: fixed;
   top: 20px;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 3000;
 }
 
@@ -287,69 +288,116 @@ footer {
 /* =========================
    Hex Hamburger Menu
    ========================= */
+
+.hex-menu-btn-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#menu__toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+.hex-menu-btn {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hex-menu-btn svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.hex-menu-btn span,
+.hex-menu-btn span::before,
+.hex-menu-btn span::after {
+  position: absolute;
+  left: 18px;
+  width: 28px;
+  height: 3px;
+  background: #585247;
+  border-radius: 2px;
+  transition: 0.3s;
+  content: '';
+  display: block;
+}
+
+.hex-menu-btn span {
+  top: 30px;
+}
+
+.hex-menu-btn span::before {
+  content: '';
+  top: -10px;
+  position: absolute;
+}
+
+.hex-menu-btn span::after {
+  content: '';
+  top: 10px;
+  position: absolute;
+}
+
+/* Animate hamburger to X */
+#menu__toggle:checked + .hex-menu-btn span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .hex-menu-btn span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked + .hex-menu-btn span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* =========================
+   Hex Menu
+   ========================= */
 #hexNav {
   position: relative;
-  width: 70vmin; height: 70vmin;
-  min-width: 300px; min-height: 300px;
+  width: 70vmin;
+  height: 70vmin;
+  min-width: 320px;
+  min-height: 320px;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   z-index: 2000;
-}
-#menuBtn {
-  position: absolute;
-  top: 45%; left: 45%;
-  width: 10%; height:10%;
-  z-index: 2;
-  cursor: pointer;
-}
-#menuBtn svg {
-  display: block;
-  width: 100%; height: 100%;
-}
-#menuBtn span {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 20px; height: 2px;
-  padding: 8px 0;
-  background-clip: content-box;
-  background-color: #585247;
-  transform: translate(-50%, -50%);
   pointer-events: none;
-  transition: background-color 0.3s;
 }
-#menuBtn span:before, #menuBtn span:after {
-  position: absolute;
-  background-color: #585247;
-  content: '';
-  width: 20px; height: 2px;
-  transition: transform 0.3s;
-}
-#menuBtn span:before { top: -8px; left: 0; }
-#menuBtn span:after { bottom: -8px; left: 0; }
-#menuBtn.active span {
-  background-color: transparent;
-}
-#menuBtn.active span:before {
-  transform: translateY(8px) rotate(45deg);
-}
-#menuBtn.active span:after {
-  transform: translateY(-8px) rotate(-45deg);
-}
+
 #hex {
   position: absolute;
-  top: 60px; /* below the hamburger */
-  left: 0;
-  width: 100vw;
+  top: 80px; /* below the button */
+  left: 50%;
+  transform: translateX(-50%) scale(0.1);
+  width: 70vmin;
   height: 70vmin;
-  transform: scale(0.1);
   transition: transform 0.35s;
   pointer-events: none;
   z-index: 1000;
 }
+
 #menu__toggle:checked ~ #hex {
-  transform: scale(0.9);
+  transform: translateX(-50%) scale(0.95);
   pointer-events: auto;
 }
+
 .tr {
   position: absolute;
   left: 50%; bottom: 50%;
@@ -363,6 +411,7 @@ footer {
 #menu__toggle:checked ~ #hex .tr {
   opacity: 1;
 }
+
 .clip {
   position: absolute;
   top: 0; left: 0;
