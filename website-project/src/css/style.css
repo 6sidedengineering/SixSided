@@ -31,73 +31,6 @@ header {
     margin-top: 10px; /* reduced for a thinner look */
 }
 
-/* Hamburger Menu */
-.hamburger-menu {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3000;
-}
-
-#menu__toggle {
-  opacity: 0;
-  position: absolute;
-}
-
-.menu__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-  width: 48px;
-  height: 48px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  cursor: pointer;
-  z-index: 2;
-}
-
-.menu__btn > span,
-.menu__btn > span::before,
-.menu__btn > span::after {
-  display: block;
-  position: absolute;
-  width: 60%;
-  height: 3px;
-  background-color: #616161;
-  transition-duration: .25s;
-  left: 20%;
-}
-
-.menu__btn > span {
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.menu__btn > span::before {
-  content: '';
-  top: -10px;
-}
-
-.menu__btn > span::after {
-  content: '';
-  top: 10px;
-}
-
-#menu__toggle:checked + .menu__btn > span {
-  transform: rotate(45deg);
-}
-#menu__toggle:checked + .menu__btn > span::before {
-  top: 0;
-  transform: rotate(0);
-}
-#menu__toggle:checked + .menu__btn > span::after {
-  top: 0;
-  transform: rotate(90deg);
-}
-
 /* Dropdown Menu */
 .menu {
     display: none;
@@ -133,6 +66,75 @@ header {
 
 .hamburger-menu:hover .menu {
     display: flex;
+}
+
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar {
+    width: 32px;
+    height: 4px;
+    background: #585247;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: background 0.2s;
+}
+
+.menu {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
+    max-width: 90vw;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* Slit animation setup */
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: height 0.35s cubic-bezier(.77,0,.18,1), opacity 0.2s;
+}
+
+.hamburger-menu:hover .menu,
+.hamburger-menu:focus-within .menu {
+    height: 180px; /* Adjust based on number of links */
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu a {
+    color: #333;
+    text-decoration: none;
+    padding: 18px 0;
+    transition: background 0.2s;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+
+.menu a:hover {
+    background: #A3B18A;
+    color: #fff;
+    border-radius: 0;
 }
 
 /* Standard Navigation (if used elsewhere) */
@@ -286,225 +288,62 @@ footer {
 }
 
 /* =========================
-   Hex Hamburger Menu
+   Manifesto Page
    ========================= */
-
-.hex-menu-btn-container {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3000;
-  width: 64px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.manifesto-main {
+    max-width: 700px;
+    margin: 60px auto 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    padding: 48px 32px 40px 32px;
+    text-align: left;
 }
 
-#menu__toggle {
-  opacity: 0;
-  position: absolute;
+.manifesto-title {
+    text-align: center;
+    font-size: 2.5em;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2em;
+    font-weight: 800;
+    color: #222;
 }
 
-.hex-menu-btn {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.manifesto-subtitle {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #4a4a4a;
+    margin-bottom: 2em;
 }
 
-.hex-menu-btn svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+.manifesto-content > p {
+    font-size: 1.15em;
+    color: #333;
+    margin-bottom: 2em;
+    line-height: 1.6;
 }
 
-.hex-menu-btn span,
-.hex-menu-btn span::before,
-.hex-menu-btn span::after {
-  position: absolute;
-  left: 18px;
-  width: 28px;
-  height: 3px;
-  background: #585247;
-  border-radius: 2px;
-  transition: 0.3s;
-  content: '';
-  display: block;
+.manifesto-list {
+    padding-left: 1.2em;
+    margin: 0;
 }
 
-.hex-menu-btn span {
-  top: 30px;
+.manifesto-list li {
+    margin-bottom: 2em;
+    font-size: 1.08em;
+    line-height: 1.7;
+    color: #222;
+    border-left: 3px solid #A3B18A;
+    padding-left: 1em;
+    background: #f8f8f8;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 
-.hex-menu-btn span::before {
-  content: '';
-  top: -10px;
-  position: absolute;
-}
-
-.hex-menu-btn span::after {
-  content: '';
-  top: 10px;
-  position: absolute;
-}
-
-/* Animate hamburger to X */
-#menu__toggle:checked + .hex-menu-btn span {
-  transform: rotate(45deg);
-}
-#menu__toggle:checked + .hex-menu-btn span::before {
-  top: 0;
-  transform: rotate(0);
-}
-#menu__toggle:checked + .hex-menu-btn span::after {
-  top: 0;
-  transform: rotate(90deg);
-}
-
-/* =========================
-   Hex Menu
-   ========================= */
-#hexNav {
-  position: relative;
-  width: 70vmin;
-  height: 70vmin;
-  min-width: 320px;
-  min-height: 320px;
-  margin: 0 auto;
-  overflow: visible;
-  z-index: 2000;
-}
-
-#menuBtn {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 64px;
-  z-index: 3000;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#menuBtn svg {
-  width: 64px;
-  height: 64px;
-  display: block;
-}
-
-#menuBtn span,
-#menuBtn span::before,
-#menuBtn span::after {
-  position: absolute;
-  left: 22px;
-  width: 20px;
-  height: 3px;
-  background: #585247;
-  border-radius: 2px;
-  transition: 0.3s;
-  content: '';
-  display: block;
-}
-
-#menuBtn span {
-  top: 31px;
-}
-
-#menuBtn span::before {
-  content: '';
-  top: -8px;
-  position: absolute;
-}
-
-#menuBtn span::after {
-  content: '';
-  top: 8px;
-  position: absolute;
-}
-
-/* Hamburger to X animation */
-#hexNav.active #menuBtn span {
-  background-color: transparent;
-}
-#hexNav.active #menuBtn span::before {
-  transform: translateY(8px) rotate(45deg);
-}
-#hexNav.active #menuBtn span::after {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Hex menu animation */
-#hex {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%) scale(0.1);
-  width: 70vmin;
-  height: 70vmin;
-  transition: transform 0.35s;
-  pointer-events: none;
-  z-index: 1000;
-}
-#hexNav.active #hex {
-  transform: translateX(-50%) scale(0.95);
-  pointer-events: auto;
-}
-.tr {
-  position: absolute;
-  left: 50%; bottom: 50%;
-  width: 34.6%; height: 40%;
-  transform-origin: 0 100%;
-  overflow: hidden;
-  transform: skewY(-30deg);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
-}
-#hexNav.active .tr {
-  opacity: 1;
-}
-.clip {
-  position: absolute;
-  top: 0; left: 0;
-  width: 116%; height: 86.66%;
-  overflow: hidden;
-  transform-origin: 0 0;
-}
-.content {
-  position: absolute;
-  width: 86.6%; height: 116%;
-  top: 0; left: 0;
-  box-sizing: border-box;
-  font-size: 2vmin;
-  perspective: 500px;
-  background: #000;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.content:hover {
-  background: #A3B18A;
-  color: #fff;
-}
-.content h2 {
-  margin: 0 0 0.5em 0;
-  font-size: 1.2em;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-.content p {
-  margin: 0;
-  font-size: 1em;
+.manifesto-list strong {
+    color: #52734D;
+    font-weight: 700;
+    font-size: 1.08em;
+    letter-spacing: 0.01em;
 }
