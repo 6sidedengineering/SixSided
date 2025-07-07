@@ -1,3 +1,3 @@
 Read Me
 
-This is the repo for the Six Sided website.
+This is the repository for the 6-Sided website.
