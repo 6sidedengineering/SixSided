@@ -33,20 +33,68 @@ header {
 
 /* Hamburger Menu */
 .hamburger-menu {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 3000;
 }
 
-.bar {
-    width: 35px;
-    height: 4px;
-    background-color: #333;
-    margin: 5px 0;
-    border-radius: 2px;
-    transition: 0.4s;
+#menu__toggle {
+  opacity: 0;
+  position: absolute;
+}
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background-color: #616161;
+  transition-duration: .25s;
+  left: 20%;
+}
+
+.menu__btn > span {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu__btn > span::before {
+  content: '';
+  top: -10px;
+}
+
+.menu__btn > span::after {
+  content: '';
+  top: 10px;
+}
+
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0);
+}
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
 }
 
 /* Dropdown Menu */
@@ -184,42 +232,172 @@ footer {
    ========================= */
 .contact-form {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 24px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    max-width: 520px;
+    margin: 48px auto 0 auto;
+    padding: 40px 32px 32px 32px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+    align-items: center;
 }
+
 .contact-form label {
     font-weight: bold;
-    margin-bottom: 4px;
-    text-align: left;
+    margin-bottom: 6px;
+    align-self: flex-start;
+    font-size: 1.08em;
 }
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 8px;
-    border-radius: 4px;
+    padding: 12px;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    font-size: 1em;
+    font-size: 1.08em;
+    box-sizing: border-box;
+    margin-bottom: 4px;
 }
+
 .contact-form textarea {
-    min-height: 100px;
+    min-height: 120px;
     resize: vertical;
 }
+
 .contact-form button {
     background: #A3B18A;
     color: #fff;
     border: none;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 1em;
+    border-radius: 6px;
+    padding: 14px 0;
+    font-size: 1.1em;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    transition: background 0.2s;
 }
+
 .contact-form button:hover {
     background: #7B9465;
+}
+
+/* =========================
+   Hex Hamburger Menu
+   ========================= */
+#hexNav {
+  position: relative;
+  width: 70vmin; height: 70vmin;
+  min-width: 300px; min-height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  z-index: 2000;
+}
+#menuBtn {
+  position: absolute;
+  top: 45%; left: 45%;
+  width: 10%; height:10%;
+  z-index: 2;
+  cursor: pointer;
+}
+#menuBtn svg {
+  display: block;
+  width: 100%; height: 100%;
+}
+#menuBtn span {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 20px; height: 2px;
+  padding: 8px 0;
+  background-clip: content-box;
+  background-color: #585247;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: background-color 0.3s;
+}
+#menuBtn span:before, #menuBtn span:after {
+  position: absolute;
+  background-color: #585247;
+  content: '';
+  width: 20px; height: 2px;
+  transition: transform 0.3s;
+}
+#menuBtn span:before { top: -8px; left: 0; }
+#menuBtn span:after { bottom: -8px; left: 0; }
+#menuBtn.active span {
+  background-color: transparent;
+}
+#menuBtn.active span:before {
+  transform: translateY(8px) rotate(45deg);
+}
+#menuBtn.active span:after {
+  transform: translateY(-8px) rotate(-45deg);
+}
+#hex {
+  position: absolute;
+  top: 60px; /* below the hamburger */
+  left: 0;
+  width: 100vw;
+  height: 70vmin;
+  transform: scale(0.1);
+  transition: transform 0.35s;
+  pointer-events: none;
+  z-index: 1000;
+}
+#menu__toggle:checked ~ #hex {
+  transform: scale(0.9);
+  pointer-events: auto;
+}
+.tr {
+  position: absolute;
+  left: 50%; bottom: 50%;
+  width: 34.6%; height: 40%;
+  transform-origin: 0 100%;
+  overflow: hidden;
+  transform: skewY(-30deg);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+#menu__toggle:checked ~ #hex .tr {
+  opacity: 1;
+}
+.clip {
+  position: absolute;
+  top: 0; left: 0;
+  width: 116%; height: 86.66%;
+  overflow: hidden;
+  transform-origin: 0 0;
+}
+.content {
+  position: absolute;
+  width: 86.6%; height: 116%;
+  top: 0; left: 0;
+  box-sizing: border-box;
+  font-size: 2vmin;
+  perspective: 500px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.content:hover {
+  background: #A3B18A;
+  color: #fff;
+}
+.content h2 {
+  margin: 0 0 0.5em 0;
+  font-size: 1.2em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.content p {
+  margin: 0;
+  font-size: 1em;
 }

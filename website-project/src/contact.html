@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
+    <div id="menu-placeholder"></div>
     <main>
         <h1>Contact</h1>
         <form class="contact-form" id="contactForm">
@@ -22,7 +22,7 @@
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const subject = encodeURIComponent('FROM WEBSITE: ' + document.getElementById('subject').value);
+            const subject = encodeURIComponent('websiteRequest: ' + document.getElementById('subject').value);
             const body = encodeURIComponent(document.getElementById('message').value);
             window.location.href = `mailto:info@6sided.com?subject=${subject}&body=${body}`;
         });
