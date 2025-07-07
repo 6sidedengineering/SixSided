@@ -1,9 +1,20 @@
+/* =========================
+   Base Styles & Layout
+   ========================= */
 body {
     background-color: #A3B18A;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* =========================
+   Header & Navigation
+   ========================= */
 header {
     background: none;
     color: inherit;
@@ -12,45 +23,15 @@ header {
     box-shadow: none;
 }
 
-nav {
-    margin: 20px 0;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
 .header {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: relative;
     margin-top: 10px; /* reduced for a thinner look */
 }
 
+/* Hamburger Menu */
 .hamburger-menu {
     position: relative;
     display: flex;
@@ -68,18 +49,19 @@ footer {
     transition: 0.4s;
 }
 
+/* Dropdown Menu */
 .menu {
     display: none;
     flex-direction: row;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 35px;
     left: 0;
     width: 100vw;
     background: #fff;
     border-radius: 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    z-index: 10;
+    z-index: 1000;
     padding: 15px 0;
     margin: 0;
 }
@@ -104,10 +86,79 @@ footer {
     display: flex;
 }
 
+/* Standard Navigation (if used elsewhere) */
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Logo
+   ========================= */
 .logo {
     width: 66vw;
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
+}
+
+/* =========================
+   Team Section
+   ========================= */
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    padding: 24px 18px;
+    width: 260px;
+    text-align: center;
+}
+
+.team-member h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.team-member p {
+    font-size: 1em;
+    margin-bottom: 16px;
+}
+
+.linkedin-link img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
+
+/* =========================
+   Footer
+   ========================= */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
