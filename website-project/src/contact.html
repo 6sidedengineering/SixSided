@@ -9,8 +9,24 @@
     <div id="header-placeholder"></div>
     <main>
         <h1>Contact</h1>
-        <p>Contact us at: <a href="mailto:info@sixsided.com">info@sixsided.com</a></p>
+        <form class="contact-form" id="contactForm">
+            <label for="subject">Message Title</label>
+            <input type="text" id="subject" name="subject" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
     </main>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const subject = encodeURIComponent('FROM WEBSITE: ' + document.getElementById('subject').value);
+            const body = encodeURIComponent(document.getElementById('message').value);
+            window.location.href = `mailto:info@6sided.com?subject=${subject}&body=${body}`;
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
