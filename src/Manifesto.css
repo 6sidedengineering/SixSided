@@ -1,0 +1,73 @@
+/* Hide scrollbar for the manifesto page, but allow scrolling */
+body.manifesto-page {
+    overflow-y: auto;
+    /* Hide scrollbar for Firefox */
+    scrollbar-width: none;
+    /* Hide scrollbar for IE and Edge */
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+body.manifesto-page::-webkit-scrollbar {
+    display: none;
+}
+
+/* Manifesto styles */
+.manifesto-main {
+    max-width: 700px;
+    margin: 78px auto 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    padding: 48px 32px 40px 32px;
+    text-align: left;
+}
+
+.manifesto-title {
+    text-align: center;
+    font-size: 2.5em;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2em;
+    font-weight: 800;
+    color: #222;
+}
+
+.manifesto-subtitle {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 400;
+    color: #4a4a4a;
+    margin-bottom: 2em;
+}
+
+.manifesto-content > p {
+    font-size: 1.15em;
+    color: #333;
+    margin-bottom: 2em;
+    line-height: 1.6;
+}
+
+.manifesto-list {
+    margin: 0;
+    padding-left: 0px;
+}
+
+.manifesto-list li {
+    margin-bottom: 2em;
+    font-size: 1.08em;
+    line-height: 1.7;
+    color: #222;
+    border-left: 3px solid #A3B18A;
+    padding-left: 1em;
+    background: #f8f8f8;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    list-style: none;
+}
+
+.manifesto-list strong {
+    color: #52734D;
+    font-weight: 700;
+    font-size: 1.08em;
+    letter-spacing: 0.02em;
+}
