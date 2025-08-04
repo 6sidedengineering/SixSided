@@ -8,9 +8,6 @@ const TopBar: React.FC = () => (
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/manifesto">Manifesto</Link>
-      </li>
     </ul>
   </nav>
 );

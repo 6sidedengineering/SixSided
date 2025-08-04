@@ -1,7 +1,6 @@
 import SixLogo from './assets/6Sided.svg'
 import './App.css'
 import TopBar from './TopBar'
-import Manifesto from './Manifesto'
 import { Routes, Route } from 'react-router-dom'
 
 function Home() {
@@ -22,7 +21,6 @@ function App() {
       <TopBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/manifesto" element={<Manifesto />} />
       </Routes>
     </>
   )
